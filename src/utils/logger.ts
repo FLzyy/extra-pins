@@ -10,12 +10,12 @@ const levels = {
 };
 
 interface Log {
-  trace(): this;
-  debug(): this;
-  info(): this;
-  warn(): this;
-  error(): this;
-  fatal(): this;
+  trace(text: unknown): this;
+  debug(text: unknown): this;
+  info(text: unknown): this;
+  warn(text: unknown): this;
+  error(text: unknown): this;
+  fatal(text: unknown): this;
 }
 
 const log = {} as Log;
