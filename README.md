@@ -1,3 +1,3 @@
 # extra-pins
 
-> More github profile pins!
+> 📌 More github profile pins!
