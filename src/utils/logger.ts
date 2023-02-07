@@ -10,7 +10,9 @@ const levels = {
 };
 
 const f = (level: keyof typeof levels, text: unknown) => {
-  (console[level as keyof Console] as typeof console.log)(
+  (console[
+    (level === "FATAL" ? "error" : level.toLowerCase()) as keyof Console
+  ] as typeof console.log)(
     `[${
       (new Intl.DateTimeFormat("en", {
         timeStyle: "full",
