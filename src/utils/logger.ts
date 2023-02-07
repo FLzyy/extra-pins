@@ -1,49 +1,40 @@
 import kulay from "npm:kulay";
 
-const levels = {
-  TRACE: kulay.gray,
-  DEBUG: kulay.blue,
-  INFO: kulay.green,
-  WARN: kulay.yellow,
-  ERROR: kulay.red,
-  FATAL: kulay.bgRed,
-};
-
-const f = (level: keyof typeof levels, text: unknown) => {
+const f = (level: string, text: unknown, levelC: string) => {
   (console[
     (level === "FATAL" ? "error" : level.toLowerCase()) as keyof Console
   ] as typeof console.log)(
     `[${
       (new Intl.DateTimeFormat("en", {
-        timeStyle: "full",
+        timeStyle: "long",
       })).format(Date.now())
-    }] ${levels[level](level)} (${Deno.pid}): ${kulay.blue(String(text))}`,
+    }] ${levelC} (${Deno.pid}): ${kulay.blue(String(text))}`,
   );
 };
 
 const log = {
   trace(text: unknown) {
-    f("TRACE", text);
+    f("TRACE", text, kulay.gray("TRACE"));
     return this;
   },
   debug(text: unknown) {
-    f("DEBUG", text);
+    f("DEBUG", text, kulay.blue("DEBUG"));
     return this;
   },
   info(text: unknown) {
-    f("INFO", text);
+    f("INFO", text, kulay.green("INFO"));
     return this;
   },
   warn(text: unknown) {
-    f("WARN", text);
+    f("WARN", text, kulay.yellow("WARN"));
     return this;
   },
   error(text: unknown) {
-    f("ERROR", text);
+    f("ERROR", text, kulay.red("ERROR"));
     return this;
   },
   fatal(text: unknown) {
-    f("FATAL", text);
+    f("FATAL", text, kulay.bgRed("FATAL"));
     return this;
   },
 };
