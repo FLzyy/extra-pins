@@ -9,7 +9,16 @@ const levels = {
   FATAL: kulay.bgRed,
 };
 
-const log = {};
+interface Log {
+  trace: this;
+  debug: this;
+  info: this;
+  warn: this;
+  error: this;
+  fatal: this;
+}
+
+const log = {} as Log;
 
 for (const key of Object.keys(levels)) {
   Object.defineProperty(log, key, {
@@ -23,6 +32,8 @@ for (const key of Object.keys(levels)) {
           kulay.blue(String(text))
         }`,
       );
+
+      return this;
     },
   });
 }
