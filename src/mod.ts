@@ -1,6 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
-// @deno-types="npm:@types/html-minifier@^4.0.2"
-import { minify } from "npm:html-minifier@^4.0.0";
+import { Language, minify } from "https://deno.land/x/minifier@v1.1.1/mod.ts";
 import type { GithubAPIResponse } from "./types/res.d.ts";
 import dark from "./styles/dark.ts";
 import light from "./styles/light.ts";
@@ -25,13 +24,10 @@ router.get("/:user/:repo", async (ctx) => {
 
     ctx.response.headers.set("Content-Type", "text/html");
 
-    ctx.response.body = minify(opts[theme](res, fullName, params), {
-      collapseBooleanAttributes: true,
-      continueOnParseError: true,
-      minifyURLs: true,
-      quoteCharacter: "'",
-      removeComments: true,
-    });
+    ctx.response.body = minify(
+      Language.HTML,
+      opts[theme](res, fullName, params),
+    );
   } catch (err) {
     ctx.response.status = 500;
     ctx.response.body = `An error has occurred: ${err}`;
