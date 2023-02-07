@@ -6,11 +6,6 @@ export default (
   fullName: boolean,
 ) => {
   return `<svg width="440" height="107" viewBox="0 0 440 107" fill="none" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500');
-  </style>
-</defs>
 
 <g id="Dark">
 <rect x="0.5" y="0.5" width="439" height="106" rx="5.5" fill="#22272E"/>
