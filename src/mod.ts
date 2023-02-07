@@ -1,7 +1,6 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 // @deno-types="npm:@types/html-minifier@^4.0.2"
 import { minify } from "npm:html-minifier@^4.0.0";
-import log from "./utils/logger.ts";
 import type { GithubAPIResponse } from "./types/res.d.ts";
 import dark from "./styles/dark.ts";
 import light from "./styles/light.ts";
@@ -34,7 +33,6 @@ router.get("/:user/:repo", async (ctx) => {
       removeComments: true,
     });
   } catch (err) {
-    log.error(err);
     ctx.response.status = 500;
     ctx.response.body = `An error has occurred: ${err}`;
   }
@@ -48,13 +46,13 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.addEventListener("listen", (event) => {
-  log.info(
+  console.info(
     `Start listening on http://${event.hostname}:${event.port}`,
   );
 });
 
 app.addEventListener("error", (event) => {
-  log.error(
+  console.error(
     event.error,
   );
 });
