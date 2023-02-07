@@ -1,6 +1,6 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
 // @deno-types="npm:@types/html-minifier@^4.0.2"
-import { minify } from "npm:html-minifier";
+import { minify } from "npm:html-minifier@^4.0.0";
 import log from "./utils/logger.ts";
 import type { GithubAPIResponse } from "./types/res.d.ts";
 import dark from "./styles/dark.ts";

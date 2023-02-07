@@ -1,4 +1,4 @@
-import chalk from "npm:chalk";
+import kulay from "npm:kulay@^1.0.0";
 
 const f = (level: string, text: unknown, levelC: string) => {
   (console[
@@ -8,7 +8,7 @@ const f = (level: string, text: unknown, levelC: string) => {
       (new Intl.DateTimeFormat("en", {
         timeStyle: "medium",
       })).format(Date.now())
-    }] ${levelC} (${Deno.pid}): ${chalk.blue(String(text))}`,
+    }] ${levelC} (${Deno.pid}): ${kulay.blue(String(text))}`,
   );
 };
 
@@ -16,42 +16,42 @@ const log = {
   trace(...text: unknown[]) {
     const l = text.length;
     for (let i = 0; i < l; i++) {
-      f("TRACE", text[i], chalk.gray("TRACE"));
+      f("TRACE", text[i], kulay.gray("TRACE"));
     }
     return this;
   },
   debug(...text: unknown[]) {
     const l = text.length;
     for (let i = 0; i < l; i++) {
-      f("DEBUG", text[i], chalk.blue("DEBUG"));
+      f("DEBUG", text[i], kulay.blue("DEBUG"));
     }
     return this;
   },
   info(...text: unknown[]) {
     const l = text.length;
     for (let i = 0; i < l; i++) {
-      f("INFO", text[i], chalk.green("INFO"));
+      f("INFO", text[i], kulay.green("INFO"));
     }
     return this;
   },
   warn(...text: unknown[]) {
     const l = text.length;
     for (let i = 0; i < l; i++) {
-      f("WARN", text[i], chalk.yellow("WARN"));
+      f("WARN", text[i], kulay.yellow("WARN"));
     }
     return this;
   },
   error(...text: unknown[]) {
     const l = text.length;
     for (let i = 0; i < l; i++) {
-      f("ERROR", text[i], chalk.red("ERROR"));
+      f("ERROR", text[i], kulay.red("ERROR"));
     }
     return this;
   },
   fatal(...text: unknown[]) {
     const l = text.length;
     for (let i = 0; i < l; i++) {
-      f("FATAL", text[i], chalk.bgRed("FATAL"));
+      f("FATAL", text[i], kulay.bgRed("FATAL"));
     }
     return this;
   },
