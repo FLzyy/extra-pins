@@ -13,28 +13,46 @@ const f = (level: string, text: unknown, levelC: string) => {
 };
 
 const log = {
-  trace(text: unknown) {
-    f("TRACE", text, kulay.gray("TRACE"));
+  trace(...text: unknown[]) {
+    const l = text.length;
+    for (let i = 0; i < l; i++) {
+      f("TRACE", text[i], kulay.gray("TRACE"));
+    }
     return this;
   },
-  debug(text: unknown) {
-    f("DEBUG", text, kulay.blue("DEBUG"));
+  debug(...text: unknown[]) {
+    const l = text.length;
+    for (let i = 0; i < l; i++) {
+      f("DEBUG", text[i], kulay.blue("DEBUG"));
+    }
     return this;
   },
-  info(text: unknown) {
-    f("INFO", text, kulay.green("INFO"));
+  info(...text: unknown[]) {
+    const l = text.length;
+    for (let i = 0; i < l; i++) {
+      f("INFO", text[i], kulay.green("INFO"));
+    }
     return this;
   },
-  warn(text: unknown) {
-    f("WARN", text, kulay.yellow("WARN"));
+  warn(...text: unknown[]) {
+    const l = text.length;
+    for (let i = 0; i < l; i++) {
+      f("WARN", text[i], kulay.yellow("WARN"));
+    }
     return this;
   },
-  error(text: unknown) {
-    f("ERROR", text, kulay.red("ERROR"));
+  error(...text: unknown[]) {
+    const l = text.length;
+    for (let i = 0; i < l; i++) {
+      f("ERROR", text[i], kulay.red("ERROR"));
+    }
     return this;
   },
-  fatal(text: unknown) {
-    f("FATAL", text, kulay.bgRed("FATAL"));
+  fatal(...text: unknown[]) {
+    const l = text.length;
+    for (let i = 0; i < l; i++) {
+      f("FATAL", text[i], kulay.bgRed("FATAL"));
+    }
     return this;
   },
 };
