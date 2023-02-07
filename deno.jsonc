@@ -1,5 +1,6 @@
 {
   "tasks": {
-    "dev": "deno run --allow-all --watch src/mod.ts"
+    "dev": "deno run --allow-all --watch src/mod.ts",
+    "start": "deno run --allow-all src/mod.ts"
   }
 }
