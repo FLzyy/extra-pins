@@ -6,7 +6,7 @@ const f = (level: string, text: unknown, levelC: string) => {
   ] as typeof console.log)(
     `[${
       (new Intl.DateTimeFormat("en", {
-        timeStyle: "long",
+        timeStyle: "medium",
       })).format(Date.now())
     }] ${levelC} (${Deno.pid}): ${kulay.blue(String(text))}`,
   );
