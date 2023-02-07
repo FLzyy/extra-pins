@@ -1,4 +1,5 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts";
+import { optimize } from "https://esm.sh/svgo@3.0.2";
 import type { GithubAPIResponse } from "./types/res.d.ts";
 import dark from "./styles/dark.ts";
 import light from "./styles/light.ts";
@@ -23,7 +24,9 @@ router.get("/:user/:repo", async (ctx) => {
 
     ctx.response.headers.set("Content-Type", "image/svg+xml");
 
-    ctx.response.body = opts[theme](res, fullName);
+    ctx.response.body = optimize(opts[theme](res, fullName), {
+      multipass: true,
+    }).data;
   } catch (err) {
     ctx.response.status = 500;
     ctx.response.body = `An error has occurred: ${err}`;
