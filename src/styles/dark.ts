@@ -8,7 +8,7 @@ export default (
   return `<svg width="440" height="107" viewBox="0 0 440 107" fill="none" xmlns="http://www.w3.org/2000/svg">
 <defs>
   <style type="text/css">
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500');
   </style>
 </defs>
 
