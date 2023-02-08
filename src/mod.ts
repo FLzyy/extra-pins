@@ -3,6 +3,7 @@ import { optimize } from "https://esm.sh/svgo@3.0.2";
 import type { GithubAPIResponse } from "./types/res.d.ts";
 import dark from "./styles/dark.ts";
 import light from "./styles/light.ts";
+import log from "./utils/logger.ts";
 
 const opts = { dark, light };
 
@@ -41,13 +42,13 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 app.addEventListener("listen", (event) => {
-  console.info(
+  log.info(
     `Start listening on http://${event.hostname}:${event.port}`,
   );
 });
 
 app.addEventListener("error", (event) => {
-  console.error(
+  log.error(
     event.error,
   );
 });
