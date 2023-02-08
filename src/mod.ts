@@ -38,6 +38,23 @@ const app = new Application({
   logErrors: false,
 });
 
+app.use(async ({ response, request }, next) => {
+  await next();
+
+  const resTime = response.headers.get("X-Response-Time");
+  const status = response.status;
+  const method = request.method;
+  const ip = request.ip;
+  const path = request.url.pathname;
+  const logF: keyof typeof log = (status >= 500 || status >= 400)
+    ? "error"
+    : status >= 200
+    ? "info"
+    : "debug";
+
+  log[logF](`${ip} ${method} ${path} ${status} ${resTime}`);
+});
+
 app.use(router.routes());
 app.use(router.allowedMethods());
 
